@@ -8,14 +8,10 @@ import { Pricing } from './components/Pricing';
 import { FAQ } from './components/FAQ';
 import { Footer } from './components/Footer';
 import { PilotModal } from './components/PilotModal';
-import { PrivacyModal } from './components/PrivacyModal';
 
 export const App: React.FC = () => {
   const [pilotModalOpen, setPilotModalOpen] = useState(false);
   const [pilotTriggerElement, setPilotTriggerElement] = useState<HTMLElement | null>(null);
-
-  const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
-  const [privacyTriggerElement, setPrivacyTriggerElement] = useState<HTMLElement | null>(null);
 
   const handleOpenPilot = (triggerElement?: HTMLElement) => {
     setPilotTriggerElement(triggerElement || null);
@@ -24,15 +20,6 @@ export const App: React.FC = () => {
 
   const handleClosePilot = () => {
     setPilotModalOpen(false);
-  };
-
-  const handleOpenPrivacy = (triggerElement?: HTMLElement) => {
-    setPrivacyTriggerElement(triggerElement || null);
-    setPrivacyModalOpen(true);
-  };
-
-  const handleClosePrivacy = () => {
-    setPrivacyModalOpen(false);
   };
 
   return (
@@ -51,20 +38,13 @@ export const App: React.FC = () => {
       </main>
 
       {/* Footer */}
-      <Footer onRequestPilot={handleOpenPilot} onOpenPrivacy={handleOpenPrivacy} />
+      <Footer onRequestPilot={handleOpenPilot} />
 
       {/* Request a Pilot Accessible Modal */}
       <PilotModal
         isOpen={pilotModalOpen}
         onClose={handleClosePilot}
         triggerElement={pilotTriggerElement}
-      />
-
-      {/* Demonstration Privacy Notice Modal */}
-      <PrivacyModal
-        isOpen={privacyModalOpen}
-        onClose={handleClosePrivacy}
-        triggerElement={privacyTriggerElement}
       />
     </div>
   );

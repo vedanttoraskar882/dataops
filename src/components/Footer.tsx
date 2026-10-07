@@ -3,10 +3,9 @@ import { ArrowRight } from 'lucide-react';
 
 interface FooterProps {
   onRequestPilot: (triggerElement?: HTMLElement) => void;
-  onOpenPrivacy: (triggerElement?: HTMLElement) => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onRequestPilot, onOpenPrivacy }) => {
+export const Footer: React.FC<FooterProps> = ({ onRequestPilot }) => {
   const currentYear = new Date().getFullYear();
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -126,15 +125,6 @@ export const Footer: React.FC<FooterProps> = ({ onRequestPilot, onOpenPrivacy })
           <p>
             &copy; {currentYear} DataOps Guardian Ltd. All rights reserved.
           </p>
-          <div className="flex items-center gap-4">
-            <button
-              type="button"
-              onClick={(e) => onOpenPrivacy(e.currentTarget)}
-              className="hover:text-slate-300 underline underline-offset-4 focus:outline-none focus-visible:ring-1 focus-visible:ring-brand-cyan"
-            >
-              Demonstration Privacy Notice
-            </button>
-          </div>
         </div>
 
       </div>
